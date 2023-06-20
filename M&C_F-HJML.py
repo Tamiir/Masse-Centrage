@@ -71,7 +71,7 @@ else :
     print("La masse totale est de",Totalkg,"kg")
 
 
-#graph
+#tracés/centrogrammes
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -97,6 +97,9 @@ plt.plot(X,Y,color='blue',label='Cat N')
 plt.plot(X2,Y2,color='blue')
 plt.plot(X3,Y3,label='Cat U',color='steelblue')
 plt.plot(X4,Y4,color='steelblue')
+plt.xlabel('Moment (m/kg)')
+plt.ylabel('Masse (kg)')
+plt.grid()
 plt.legend()
 #plt.savefig('masseCentrageFHJML.png')
 plt.show()
