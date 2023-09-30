@@ -1,18 +1,28 @@
 # -*- coding: utf-8 -*-
 
-ew = 609.5
+import matplotlib.pyplot as plt
+import numpy as np
+
+ew = 609.5 #Poids à vide (kg)
+
+# les bras de levier :
 blew = 0.34
 blAV = 0.36
 blAR = 1.19
 blFuel = 1.12
 blSupp = 1.61
 blBagages = 1.9
+
+# les limites :
 maxCatN = 1000
 maxCatU = 910
 limFuel = 110
 limSupp = 50
 limBagages = 40
-rhoFuel = 0.72
+
+rhoFuel = 0.72  #densité du fuel (kg/L)
+
+# les inputs :
 kgAV = float(input("poids passagers AV (kg) : "))
 kgAR = float(input("poids passagers AR (kg) : "))
 LFuel = float(input("Litres de fuel dans le principal (L) (max:110 L): "))
@@ -30,7 +40,7 @@ if kgBagages > limBagages :
     while kgBagages > limBagages :
         kgBagages = float(input("c'est trop , choisir une valeur valable : "))
 
-# les calculs :
+# les calculs de moment (masse * bras de levier = moment) :
 mew=ew*blew
 mAV=kgAV*blAV
 mAR=kgAR*blAR
@@ -55,9 +65,6 @@ else :
 
 
 #graph
-import matplotlib.pyplot as plt
-import numpy as np
-
 x=Totalm
 y=Totalkg
 x2=zfm
@@ -81,8 +88,6 @@ plt.xlabel('Moment (m/kg)')
 plt.ylabel('Masse (kg)')
 plt.grid()
 plt.legend()
-#plt.savefig('masseCentrageFGOOF.png')
+#plt.savefig('masseCentrageFGOOF.png') # si vous voulez sauvegarder le centrogamme enlevez le # devant plt.savefig
 plt.show()
 print("Moment total :",format(Totalm,'.3f'),"m/kg / Masse totale :",format(Totalkg,'.3f'),"kg / Centrage : ",format(BLfinal,'.3f'),'m')
-
-
