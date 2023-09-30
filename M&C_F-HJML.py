@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed Nov  3 19:47:21 2021
-
 @author: Paul
 """
 
 #F-HJML
 
-ew = 725.7
+import matplotlib.pyplot as plt
+import numpy as np
+
+ew = 725.7  #Poids à vide (kg)
+
+# les bras de levier :
 blew = 1.038
 blAV = 0.864
 blAR = 1.854
@@ -15,6 +19,8 @@ blFuel = 1.227
 #blSupp = 1.61
 blBagages = 2.413
 blBagages2 = 3.124
+
+# les limites :
 maxCatN = 1111
 maxCatU = 953
 limFuel = 212
@@ -22,7 +28,10 @@ limFuel = 212
 limBagages1 = 54
 limBagages2 = 22.7
 limbagages = 54
-rhoFuel = 0.72
+
+rhoFuel = 0.72  #densité du fuel (kg/L)
+
+# les inputs :
 kgAV = float(input("poids passagers AV (kg) : "))
 kgAR = float(input("poids passagers AR (kg) : "))
 LFuel = float(input("Litres de fuel (L) (max:212 L): "))
@@ -45,7 +54,7 @@ if kgBagages+kgBagages2 > limbagages :
         kgBagages2 = float(input("kg de bagages zones 2(kg) : "))
     
     
-# les calculs :
+# les calculs de moments (masse * bras de levier = moment):
 mew=ew*blew
 mAV=kgAV*blAV
 mAR=kgAR*blAR
@@ -72,8 +81,6 @@ else :
 
 
 #tracés/centrogrammes
-import matplotlib.pyplot as plt
-import numpy as np
 
 x=Totalm
 y=Totalkg
@@ -101,6 +108,6 @@ plt.xlabel('Moment (m/kg)')
 plt.ylabel('Masse (kg)')
 plt.grid()
 plt.legend()
-#plt.savefig('masseCentrageFHJML.png')
+#plt.savefig('masseCentrageFHJML.png') #pour sauvegarder le graphique enlevez le # devant plt.savefig
 plt.show()
 print("Moment total :",format(Totalm,'.3f'),"m/kg / Masse totale :",format(Totalkg,'.3f'),"kg / Centrage : ",format(BLfinal,'.3f'),'m')
